@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:metadata>
+        <f:viewParam name="id" value="#{gBMBean.id}" />
+    </f:metadata>
+
+    <body>
+
+        <ui:composition template="./AppLayout.xhtml">
+
+            <ui:define name="content">
+                
+                <h:form>
+                <h2><h:commandLink value=" * Création des comptes (Test)" action="#{gBMBean.testAccount()}" /></h2>
+                </h:form>
+                
+                <f:view>
+                    <f:event type="preRenderView" listener="#{gBMBean.loadAccount(event)}" />
+                    
+                    <h1><h:outputText value="Détail du compte: #{gBMBean.cb.id} de : #{gBMBean.cb.owner}" rendered="#{gBMBean.id != 0}" /></h1>
+                    
+                    <h:form>
+                        
+                        <h2 class="alert alert-warning"><h:outputText value="Créer / Modifier"/></h2>
+                        
+                        <p:panelGrid columns="2">
+                            <h:outputLabel value="ref compte:" for="compteId" rendered="#{gBMBean.id != 0}"/>
+                            <p:inputText id="prependedInput" value="#{gBMBean.id}" title="CompteId" rendered="#{gBMBean.id != 0}"/>
+                            
+                            <h:outputLabel value="proprietaire:" for="owner" />
+                            <p:inputText id="owner" value="#{gBMBean.cb.owner}" title="proprietaire" />
+                            
+                            <h:outputLabel value="Solde:" for="solde" />
+                            <p:inputText id="solde" value="#{gBMBean.cb.solde}" title="solde" />
+                        
+                        </p:panelGrid>
+                        <h:commandButton id="back" immediate="true" value="Back" action="#{gBMBean.list}"/>  
+                        <h:commandButton id="update" value="Update" action="#{gBMBean.update()}"/> 
+                    </h:form>
+                </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

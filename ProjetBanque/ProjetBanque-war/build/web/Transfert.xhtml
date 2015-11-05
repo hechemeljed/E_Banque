@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+	  
+    
+      
+        
+        <f:metadata><f:viewParam name="idTransfert" value="#{transfertMBean.idTransfert}" />
+        <f:viewParam name="idCb1" value="#{transfertMBean.idCb1}" />
+        <f:viewParam name="txt1" value="#{transfertMBean.txt1}" /></f:metadata>
+            
+
+    <body>
+        
+        <ui:composition template="./AppLayout.xhtml">
+
+            <ui:define name="content">
+                <h1 class="well">Transfert</h1>
+                <f:view>
+                    <h:form>
+                       <!-- <p:growl id="messages" showDetail="true"/> -->
+                        <h4><h:outputText class="alert alert-info" value="Ce formulaire permet de faire un transfert d'un compte 1 vers un compte 2 avec le montant introduit !"/></h4><br />
+                        <h:panelGrid columns="2">
+                            
+                            <h:outputLabel value="Id compte à débiter:" for="id_cb1" rendered="#{transfertMBean.idTransfert == 0}" /> 
+                            <p:autoComplete id="id_cb1" value="#{transfertMBean.txt1}"   
+                                            completeMethod="#{transfertMBean.complete}" title="Id du compte 1" rendered="#{transfertMBean.idTransfert == 0}" />
+                            
+                            <h:outputLabel value="Id compte à débiter:" for="id_cb1" rendered="#{transfertMBean.idTransfert > 0}" /> 
+                            <p:autoComplete id="id_cb1_transfert" value="#{transfertMBean.txt1}"   
+                                            completeMethod="#{transfertMBean.complete}" title="Id du compte 1" rendered="#{transfertMBean.idTransfert > 0}" disabled="true" />
+                            
+                            <h:outputLabel value="Id compte à créditer:" for="id_cb2" />
+                            <p:autoComplete completeMethod="#{transfertMBean.complete}" id="id_cb2" value="#{transfertMBean.txt2}" title="Id_cb2" />
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="Montant:" for="amount" />
+                            <h:inputText id="amount" value="#{transfertMBean.amount}" title="Amount" />
+                        </h:panelGrid>
+                        <h:commandButton action="#{transfertMBean.transfert()}" value="Tranferer" />
+                    </h:form>
+                </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

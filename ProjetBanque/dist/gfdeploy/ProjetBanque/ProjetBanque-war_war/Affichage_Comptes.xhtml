@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./AppLayout.xhtml">
+
+            <ui:define name="content">
+                <f:event type="javax.faces.event.PreRenderViewEvent" listener="#{gBMBean.preRenderView()}"/>
+
+                <h1 class="well">Affichages des comptes</h1>
+                <f:view>
+
+                    <h:form>
+
+                        <p:dataTable value="#{gBMBean.allComptes}" var="item" paginator="true" rows="10"
+                                     widgetVar="compteTable" emptyMessage="Aucun compte n'a été trouvé !" 
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                     rowsPerPageTemplate="#{gBMBean.pagesList}"
+                                     lazy="true">
+ 
+                            <f:facet name="header">    
+                                <p:outputPanel>    
+                                    <h:outputText value="Search all fields:" />    
+                                    <p:inputText id="globalFilter" onkeyup="compteTable.filter()" style="width:150px" />    
+                                </p:outputPanel>    
+                            </f:facet>    
+
+                            <p:column headerText="Ref du compte"  
+                                      sortBy="#{item.id}"  
+                                      filterBy="#{item.id}"  
+                                      filterMatchMode="contains">  
+                                <h:commandLink action="#{gBMBean.showCompte(item)}" value="#{item.id}"/>    
+                            </p:column>  
+                            <p:column sortBy="#{item.owner}" filterBy="#{item.owner}"   
+                                      headerText="Model" footerText="contains"  
+                                      filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Propriétaire"/>
+                                </f:facet>
+                                <h:outputText value="#{item.owner}"/>
+                            </p:column>
+                            <p:column sortBy="#{item.solde}"
+                                      filterBy="#{item.solde}"   
+                                      headerText="Model" footerText="contains"  
+                                      filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Solde"/>
+                                </f:facet>
+                                <h:outputText value="#{item.solde}"/>
+                            </p:column>
+                            <p:column headerText="Action">   
+                                <h:commandLink action="#{gBMBean.showOperation(item)}" value="" title="afficher les operations de ce compte !" class="btn">
+                                    <i class="icon-align-justify"></i>
+                                </h:commandLink>
+                                <h:commandLink action="#{gBMBean.showCompte(item)}" value="" title="modifier ce compte !" class="btn">
+                                    <i class="icon-wrench"></i>
+                                </h:commandLink>
+                                <h:commandLink action="#{transfertMBean.tranfertById(item)}" value="" title="transferer de l'argent !" class="btn">
+                                    <i class="icon-refresh"></i>
+                                </h:commandLink>
+                                <h:commandLink action="#{gBMBean.deleteCompte(item)}" value="" title="supprimer ce compte !" class="btn">
+                                    <i class="icon-trash"></i>
+                                </h:commandLink>
+                            </p:column>  
+                        </p:dataTable>
+                        
+                    </h:form>
+                </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

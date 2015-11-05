@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <h:outputScript name="jquery/jquery.js" library="primefaces" target="head" />
+        <script src="./resources/js/bootstrap.js" type="text/javascript" />
+        
+         
+        
+        <title>Projet Banque</title>
+    </h:head>
+
+    <h:body>
+        
+        
+        <ui:include src="menu.xhtml" />
+        <br /><br />
+        <!--<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /> --> 
+        <table id="site" style="min-width: 990px;" class="">
+            <tr>
+                <td>
+                     <div id="top">
+                        <ui:insert name="top">
+                           
+                        </ui:insert>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 80%;" class="">
+                    <div style="min-height: 600px;">
+                         <ui:insert name="content"><h1 class="alert alert-danger">Aucun Content n'a été défini !!!</h1></ui:insert>
+                    </div><br /><br /><br /><br /><br />
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+    </h:body>
+
+</html>

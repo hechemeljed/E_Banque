@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./AppLayout.xhtml">
+
+            <ui:define name="content">
+                <h1 class="well">Accueil</h1>
+           
+               <center> <img src="resources/img/les-banques.jpg" width="800" height="534" align="absmiddle" /></center>
+                <h3 class="alert alert-warning">Fonctionnalités : </h3>
+                <ul class="alert alert-info">
+                    <ol>
+                    - Cliquer sur l'affichage des comptes pour gérer les comptes . </ol><br />
+                      <ol>- Créer des comptes de test .</ol><br />
+                  
+                    <ol>
+                      - Créer un nouveau compte
+                    </ol><br />
+                    <ol>
+                      - Modifier un compte
+                    </ol><br />
+                    <ol>
+                      - Supprimer un compte
+                    </ol><br />
+                    <ol><p>Faire des transferts entre deux comptes avec une pre-selection du compte à debiter 
+                            ou avec un système d'auto completion.
+                            Le système propose des suggestions de noms et s'occupe de chercher l'Id du compte choisis
+                            afin d'éviter le cas echeant des comptes ayant deux propriétaires différents mais avec le même nom.
+                        </p></ol><br />
+                    <ol>Rechercher directement des utilisateurs en utilisant la barre de recherche en haut de l'application</ol>
+                </ul>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

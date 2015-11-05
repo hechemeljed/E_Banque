@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <body>  
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+
+        <div class="nav-collapse collapse navbar-responsive-collapse">
+                
+          <ul class="nav">
+          <li><a class="brand" href="index.xhtml" ><img src="resources\img\EEO_E.png" width="32" height="32" align="absmiddle" /> Banque</a></li>
+          <li>  </li>
+          <li>  </li>
+            <li><h:link outcome="index.xhtml"><img src="resources\img\telecom.png" align="absmiddle" title="Accueil" /> Accueil</h:link> 
+              </li>    
+            <li><h:link outcome="Affichage_Comptes.xhtml"><img src="resources\img\my-invoices.png" align="absmiddle" title="Afficher les Comptes" /> Afficher les Comptes</h:link></li>    
+            <li><h:link outcome="Transfert.xhtml"><img src="resources\img\credit_cards.png" align="absmiddle" title="Transfert" /> Transfert</h:link>
+           </li>    
+            <li><h:link outcome="showCompte.xhtml"><img src="resources\img\feedback.png" align="absmiddle" title="Créer / Modifier Compte" /> Créer / Modifier Compte</h:link></li>  
+            <li><h:link outcome="Rapports.xhtml"><img src="resources\img\rapports.png" align="absmiddle" title="Rapports" /> Rapports</h:link></li>
+          </ul>
+          
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
+    </body>
+</html>

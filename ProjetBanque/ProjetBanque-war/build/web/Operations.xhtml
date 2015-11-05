@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:metadata>
+        <f:viewParam name="id" value="#{gBMBean.id}" />
+    </f:metadata>
+
+    <body>
+
+        <ui:composition template="./AppLayout.xhtml">
+
+            <ui:define name="content">
+                 <f:view>
+                <f:event type="preRenderView" listener="#{gBMBean.loadAccount}" />
+                
+                <h1 class="well">Historique des operations</h1>
+                <h3 class="alert alert-info">Compte : #{gBMBean.cb.id} de : #{gBMBean.cb.owner}</h3>
+                
+                
+            <h:form>
+                
+                <p:dataTable value="#{gBMBean.operations}" var="item" paginator="true" rows="10"
+                             widgetVar="compteTable" emptyMessage="Aucun compte trouvé !">
+                    
+                    <f:facet name="header">    
+                        <p:outputPanel>    
+                            <h:outputText value="Search all fields:" />    
+                            <p:inputText id="globalFilter" onkeyup="compteTable.filter()" style="width:150px" />    
+                        </p:outputPanel>    
+                    </f:facet>    
+                    
+                    <p:column headerText="Date d'operation"  
+                              sortBy="#{item.dateOperation}"  
+                              filterBy="#{item.dateOperation}"  
+                            filterMatchMode="contains">  
+                        <h:outputText value="#{item.dateOperation}" />   
+                    </p:column>  
+                    <p:column sortBy="#{item.description}" filterBy="#{item.description}"   
+                                headerText="Model" footerText="contains"  
+                                filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="Nature d'opération"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.amount}"
+                              filterBy="#{item.amount}"   
+                              headerText="Model" footerText="contains"  
+                              filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="Montant"/>
+                        </f:facet>
+                        <h:outputText value="#{item.amount}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.avec}"
+                              filterBy="#{item.avec}"   
+                              headerText="Model" footerText="contains"  
+                              filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="Avec"/>
+                        </f:facet>
+                        <h:outputText value="#{item.avec}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
